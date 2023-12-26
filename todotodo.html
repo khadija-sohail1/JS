@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stupid List</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      background-color: hsl(46, 100%, 65%);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #todo-container {
+      background-color: #ffffffb6;
+      padding: 20px;
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(0, 0, 0.1, 0.1);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 60%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #cfcfcf;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #ffcc00;
+      color: #333;
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button.delete-all {
+      display: none;
+    }
+
+    .task-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .task-item button.delete-task {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="todo-container">
+    <input type="text" id="taskInput" placeholder="Add task bruh...">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+    <button class="delete-all" onclick="deleteAllTasks()">Delete All Tasks</button>
+  </div>
+
+  <script>
+    document.getElementById('taskInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); 
+        addTask();
+      }
+    });
+  
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskList = document.getElementById('taskList');
+      const deleteAllButton = document.querySelector('.delete-all');
+  
+      if (taskInput.value.trim() === '') return;
+  
+      const taskItem = document.createElement('li');
+      taskItem.className = 'task-item';
+      taskItem.innerHTML = `<span>${taskInput.value}</span>
+        <button class="delete-task" onclick="deleteTask(this.parentNode)">Delete</button>`;
+  
+      taskList.appendChild(taskItem);
+      taskInput.value = '';
+  
+      deleteAllButton.style.display = taskList.children.length >= 2 ? 'block' : 'none';
+    }
+  
+    function deleteTask(taskItem) {
+      const li = taskItem;
+      li.remove();
+      
+      const deleteAllButton = document.querySelector('.delete-all');
+      deleteAllButton.style.display = taskList.children.length >= 2 ? 'block' : 'none';
+    }
+  
+    function deleteAllTasks() {
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+    
+      const deleteAllButton = document.querySelector('.delete-all');
+      deleteAllButton.style.dis
+    }
+  </script>
+  
+  </body>
+  </html>
+  
+  
+  
+  
+  
+  
+  
