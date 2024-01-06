@@ -41,6 +41,8 @@ body {
 
   button.delete-all {
     display: none;
+    margin-top: 50px;
+    margin-left: 75px;
   }
 
   .task-item {
@@ -53,4 +55,22 @@ body {
   .task-item button.delete-task {
     background-color: #333;
     color: #fff;
+  }
+
+  .task-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .task-item input[type="checkbox"] {
+    margin-right: 4px;
+  }
+
+  .task-item span {
+    text-decoration: none;
+  }
+
+  .task-item input[type="checkbox"]:checked+span {
+    text-decoration: line-through;
   }

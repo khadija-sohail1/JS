@@ -9,7 +9,7 @@
 <body>
 
   <div id="todo-container">
-    <input type="text" id="taskInput" placeholder="Add task bruh...">
+    <input type="text" id="taskInput" placeholder="Add task bruh..." onkeydown="handleEnter(event)">
     <button onclick="addTask()">Add Task</button>
     <ul id="taskList"></ul>
     <button class="delete-all" onclick="deleteAllTasks()">Delete All Tasks</button>
